@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    [SerializeField] private ParticleSystem EnemyEffect;
     private Animator anim;
     private SphereCollider attackCollider;
     private float attackTime = 0.0f;
@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
         if(other.tag == "Enemy")
         {
             Destroy(other.gameObject);
+            Instantiate(EnemyEffect,other.transform.position, Quaternion.identity);
         }
     }
 
